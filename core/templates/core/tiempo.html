@@ -1,0 +1,186 @@
+{% load static%}
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/estilo.css'%}">
+    <!-- BOOSTRAP -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
+    <!-- PARSLEY -->
+    <script src="jquery.js"></script>
+    <script src="parsley.min.js"></script>        
+    
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+    integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
+    crossorigin="anonymous"></script>
+    <title>Tiempo</title>
+
+</head>
+<body style="background: linear-gradient(#4d84aa, #a2c1d7);">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <div class="container px-0">
+      <a class="navbar-brand" href="{% url 'inicio' %}" style="font-size: 25px">NoticiasTV</a>
+      <button class="navbar-toggler" type="button" aria-expanded="false"><span class="navbar-toggler-icon"></span></button>
+      <div id="ul" class="collapse navbar-collapse">
+          <ul class="navbar-nav ">
+            <li class="nav-item"><a class="nav-link active" href="{% url 'inicio' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Home">
+              <path d="M21 19v-6.733a4 4 0 0 0-1.245-2.9L13.378 3.31a2 2 0 0 0-2.755 0L4.245 9.367A4 4 0 0 0 3 12.267V19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"/></svg> Inicio</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'ultima' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Alarm">
+            <circle cx="12" cy="13" r="9"/>
+            <path d="M15.5 9.5L12 13"/>
+              <path d="M19 19l1 3"/>
+              <path d="M5 19l-1 3"/>
+              <path d="M2 5l3-3"/>
+              <path d="M19 2l3 3"/>
+              <path d="M12 4V2"/></svg><br> Ultima hora</a></li>                
+          <li class="nav-item"><a class="nav-link active" href="{% url 'nacional' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Globe">
+            <circle cx="12" cy="12" r="10"/>
+            <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(90 12 12)"/>
+            <path d="M2 12h20"/></svg> Nacional</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'internacional' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Plane">
+            <path d="M4 11l-2 4 3.408 1.363a4 4 0 0 1 2.229 2.229L9 22l4-2-1.21-2.42a2 2 0 0 1 .679-2.56L14 14l4 7 3-4-2.29-7.469.715-.714c1.412-1.412 2.71-3.682 1.075-5.317-1.635-1.635-3.91-.34-5.316 1.077l-.72.708L7 3 3 6l7 4-1.02 1.531a2 2 0 0 1-2.56.68L4 11z"/></svg> Internacional</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'tiempo' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Water">
+            <path d="M12 22a8 8 0 0 1-8-8c0-3.502 2.71-6.303 5.093-8.87L12 2l2.907 3.13C17.29 7.698 20 10.499 20 14a8 8 0 0 1-8 8z"/></svg> Tiempo</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'contacto' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Envelope">
+            <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6z"/>
+            <path d="M2 8l7.501 6.001a4 4 0 0 0 4.998 0L22 8"/></svg> Contacto</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'login' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Person">
+            <circle cx="12" cy="7" r="5"/>
+            <path d="M17 14h.352a3 3 0 0 1 2.976 2.628l.391 3.124A2 2 0 0 1 18.734 22H5.266a2 2 0 0 1-1.985-2.248l.39-3.124A3 3 0 0 1 6.649 14H7"/></svg> Login</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'subirnoticia' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-CloudUpload">
+              <path d="M12 12v9m0-9l-2.5 2m2.5-2l2.5 2"/><path d="M5.034 9.117A4.002 4.002 0 0 0 6 17h1"/>
+              <path d="M15.83 7.138a5.5 5.5 0 0 0-10.796 1.98S5.187 10 5.5 10.5"/>
+              <path d="M17 17a5 5 0 1 0-1.17-9.862L14.5 7.5"/></svg><br> Sube tu noticia Aqui!</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'listar' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-ShippingBoxV1">
+            <path d="M11.029 2.54a2 2 0 0 1 1.942 0l7.515 4.174a1 1 0 0 1 .514.874v8.235a2 2 0 0 1-1.029 1.748l-7 3.89a2 2 0 0 1-1.942 0l-7-3.89A2 2 0 0 1 3 15.824V7.588a1 1 0 0 1 .514-.874L11.03 2.54z"/>
+            <path d="M3 7l9 5m0 0l9-5m-9 5v9.5"/><path d="M7.5 9.5l9-5"/>
+            <path d="M6 12.328L9 14"/></svg><br> Lista De Noticias</a></li>
+          </ul>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div id="WidgetTutiempo" class="d-flex justify-content-center align-items-center">
+    <div class="weather-forecast">
+        <div class="header">
+            <h2>El tiempo en <span id="locality-name"></span></h2>
+        </div>
+        <div id="daily-forecast" class="forecast-container"></div>
+    </div>
+</div>
+
+
+<div class="container">
+    <h1 class="mt-5 mb-4"><h1>Noticias sobre el tiempo</h1>
+    <br>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="{% static 'img/lluvias-tormentas-0617 (1).jpg'%}" class="card-img-top" alt="Noticia 1">
+          <div class="card-body">
+            <h5 class="card-title">Lluvia para el Día de la Madre: Pronostican precipitaciones y bajas temperaturas el domingo en Santiago</h5>
+            <p class="card-text">Pese a que anteriormente se habían descartado precipitaciones en las próximas jornadas en Santiago, la situación cambió y ahora existe la posibilidad de que caiga lluvia acompañada de bajas temperaturas este domingo 12 de mayo, jornada en la que se celebra el Día de la Madre.Debido a este pronóstico, las festividades al aire libre no sólo se podrían ver obstaculizadas por las bajas temperaturas, sino que también por el agua que caería en la Región Metropolitana.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="{% static 'img/lluvia2.jpg'%}" class="card-img-top" alt="Noticia 2">
+          <div class="card-body">
+            <h5 class="card-title">Ola de frío en Santiago: ¿Hasta cuándo durarán las bajas temperaturas en la capital?</h5>
+            <p class="card-text">El pasado martes inició una ola de frío en la Región Metropolitana, que durante esa misma jornada dejó nieve en algunas comunas de la parte alta de la capital.
+                De hecho, este miércoles se registró la mañana más helada del año y se pronostica que en los próximos días las temperaturas continúen bajas.En tanto, el sábado se encuentra pronosticada una mínima de 3°C y el domingo y el lunes 1°C. De este modo, la ola de frío se extendería al menos hasta principios de la próxima semana. </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="{% static 'img/lluvias.jpg'%}" class="card-img-top" alt="Noticia 3">
+          <div class="card-body">
+            <h5 class="card-title">Intensas lluvias dejan varias postales de inundamiento<h5>
+            <p class="card-text">Mas de 5 comunas inundadas,aproximadamente 10,000 personas se vieron afectadas con su hogar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="{% static 'img/dolar_xd.jpeg'%}" class="card-img-top" alt="Noticia 4">
+          <div class="card-body">
+            <h5 class="card-title">Dólar deja atrás las caídas y muestra alzas tras últimos datos inflacionarios de Chile</h5>
+            <p class="card-text"> Tras cuatro semanas consecutivas registrando bajas, este miércoles el dólar cambió de tendencia y mostró variaciones al alza durante sus primeros movimientos de apertura. <br>
+                 <br> Ayer el tipo de cambio promedió $934,20 y hoy tocó máximos de $941,15. A las 09:30 horas promedió $938,29.</p>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="{% static 'img/Miel.jpg'%}" class="card-img-top" alt="Noticia 5">
+          <div class="card-body">
+            <h5 class="card-title">3 enfermedades en las que los beneficios de la miel pueden ayudar</h5>
+            <p class="card-text">La miel tiene propiedades antisépticas,
+               antibacterianas y antiinflamatorias que pueden complementar distintos tratamientos médicos.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="{% static 'img/OpenAI new.jpg'%}" class="card-img-top" alt="Noticia 6">
+          <div class="card-body">
+            <h5 class="card-title">Tiembla Google: OpenAI trabaja en buscador web para ChatGPT</h5>
+            <p class="card-text">De acuerdo a reportes de prensa, OpenAI buscaría una forma de ser su propio motor de búsqueda con ChatGPT integrado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<script>
+    function DrawWeatherTutiempo(data) {
+    var localityName = data.locality.name;
+    var meses = ['-','Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
+    // Daily Forecast
+    var dailyForecastHtml = '';
+    for (var k in data) {
+        if (k.indexOf("day") > -1) {
+            var res = data[k].date.split("-");
+            dailyForecastHtml += '<div class="daydata">';
+            dailyForecastHtml += '<h3 class="date">' + res[2] + ' de ' + meses[res[1]] + ' de ' + res[0] + '</h3>';
+            dailyForecastHtml += '<p class="it"><img alt="' + data[k].text + '" title="' + data[k].text + '" height="50" src="https://v5i.tutiempo.net/wi/01/50/' + data[k].icon + '.png" width="50" />' + data[k].temperature_max + '&deg;C<br />' + data[k].temperature_min + '&deg;C</p>';
+            dailyForecastHtml += '<p class="wind"><img alt="' + data[k].wind_direction + '" title="' + data[k].wind_direction + '" height="50" src="https://v5i.tutiempo.net/wd/big/black/' + data[k].icon_wind + '.png" width="50" />' + data[k].wind + ' km/h</p>';
+            dailyForecastHtml += '<p class="oc">Humedad: ' + data[k].humidity + '%<br />Salida sol: ' + data[k].sunrise + '<br />Puesta sol: ' + data[k].sunset + '</p>';
+            dailyForecastHtml += '<p class="moon"><img alt="" height="50" src="https://v5i.tutiempo.net/wmi/02/' + data[k].moon_phases_icon + '.png" width="50" />Salida luna: ' + data[k].moonrise + '<br />Puesta luna: ' + data[k].moonset + '</p>';
+            dailyForecastHtml += '</div>';
+        }
+    }
+    document.getElementById("locality-name").textContent = localityName;
+    document.getElementById("daily-forecast").innerHTML = dailyForecastHtml;
+}
+
+function LoadJSONTuTiempo() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
+            DrawWeatherTutiempo(data);
+        }
+    };
+    xhttp.open("GET", "https://api.tutiempo.net/json/?lan=es&apid=4xEzaaaq4XqhuV2&lid=55760", true);
+    xhttp.send();
+}
+LoadJSONTuTiempo();
+    </script>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>

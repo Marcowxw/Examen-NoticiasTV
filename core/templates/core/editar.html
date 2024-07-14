@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Noticia</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Editar Noticia</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group row">
+                <label for="{{ form.titulo.id_for_label }}" class="col-sm-4 col-form-label text-right">Título:</label>
+                <div class="col-sm-8">
+                    {{ form.titulo }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="{{ form.pNombre.id_for_label }}" class="col-sm-4 col-form-label text-right">PNombre:</label>
+                <div class="col-sm-8">
+                    {{ form.pNombre }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="{{ form.pApellido.id_for_label }}" class="col-sm-4 col-form-label text-right">PApellido:</label>
+                <div class="col-sm-8">
+                    {{ form.pApellido }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="{{ form.seleccion.id_for_label }}" class="col-sm-4 col-form-label text-right">Selección:</label>
+                <div class="col-sm-8">
+                    {{ form.seleccion }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="{{ form.categoria.id_for_label }}" class="col-sm-4 col-form-label text-right">Categoría:</label>
+                <div class="col-sm-8">
+                    {{ form.categoria }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="{{ form.imagen.id_for_label }}" class="col-sm-4 col-form-label text-right">Imagen:</label>
+                <div class="col-sm-8">
+                    {{ form.imagen }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="{{ form.descripcion.id_for_label }}" class="col-sm-4 col-form-label text-right">Descripción:</label>
+                <div class="col-sm-8">
+                    {{ form.descripcion }}
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-block">Guardar Cambios</button>
+            </div>
+        </form>
+        <div class="text-center mt-3">
+            <a href="{% url 'listar' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agregar Noticia</title>
+</head>
+<body>
+    <h1>Agregar Noticia</h1>
+    <form method="POST" enctype="multipart/form-data" action="{% url 'agrega_form' %}">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

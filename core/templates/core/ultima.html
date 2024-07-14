@@ -1,0 +1,516 @@
+{% load static%}
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/styleulth.css'%}">
+    <!-- BOOSTRAP -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
+    <!-- PARSLEY -->
+    <script src="jquery.js"></script>
+    <script src="parsley.min.js"></script>        
+    
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+    integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
+    crossorigin="anonymous"></script>
+    <title>ÚLtima hora</title>
+</head>
+<body style="background: linear-gradient(#2d4658, #a2c1d7);">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <div class="container px-0">
+            <a class="navbar-brand" href="{% url 'inicio' %}" style="font-size: 25px">NoticiasTV</a>
+        <button class="navbar-toggler" type="button" aria-expanded="false"><span class="navbar-toggler-icon"></span></button>
+        <div id="ul" class="collapse navbar-collapse">
+            <ul class="navbar-nav ">
+                <li class="nav-item"><a class="nav-link active" href="{% url 'inicio' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Home">
+                    <path d="M21 19v-6.733a4 4 0 0 0-1.245-2.9L13.378 3.31a2 2 0 0 0-2.755 0L4.245 9.367A4 4 0 0 0 3 12.267V19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"/></svg> Inicio</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{% url 'ultima' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Alarm">
+                  <circle cx="12" cy="13" r="9"/>
+                  <path d="M15.5 9.5L12 13"/>
+                    <path d="M19 19l1 3"/>
+                    <path d="M5 19l-1 3"/>
+                    <path d="M2 5l3-3"/>
+                    <path d="M19 2l3 3"/>
+                    <path d="M12 4V2"/></svg><br> Ultima hora</a></li>                
+                <li class="nav-item"><a class="nav-link active" href="{% url 'nacional' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Globe">
+                  <circle cx="12" cy="12" r="10"/>
+                  <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(90 12 12)"/>
+                  <path d="M2 12h20"/></svg> Nacional</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{% url 'internacional' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Plane">
+                  <path d="M4 11l-2 4 3.408 1.363a4 4 0 0 1 2.229 2.229L9 22l4-2-1.21-2.42a2 2 0 0 1 .679-2.56L14 14l4 7 3-4-2.29-7.469.715-.714c1.412-1.412 2.71-3.682 1.075-5.317-1.635-1.635-3.91-.34-5.316 1.077l-.72.708L7 3 3 6l7 4-1.02 1.531a2 2 0 0 1-2.56.68L4 11z"/></svg> Internacional</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{% url 'tiempo' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Water">
+                  <path d="M12 22a8 8 0 0 1-8-8c0-3.502 2.71-6.303 5.093-8.87L12 2l2.907 3.13C17.29 7.698 20 10.499 20 14a8 8 0 0 1-8 8z"/></svg> Tiempo</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{% url 'contacto' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Envelope">
+                  <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6z"/>
+                  <path d="M2 8l7.501 6.001a4 4 0 0 0 4.998 0L22 8"/></svg> Contacto</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{% url 'login' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Person">
+                  <circle cx="12" cy="7" r="5"/>
+                  <path d="M17 14h.352a3 3 0 0 1 2.976 2.628l.391 3.124A2 2 0 0 1 18.734 22H5.266a2 2 0 0 1-1.985-2.248l.39-3.124A3 3 0 0 1 6.649 14H7"/></svg> Login</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{% url 'subirnoticia' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-CloudUpload">
+                    <path d="M12 12v9m0-9l-2.5 2m2.5-2l2.5 2"/><path d="M5.034 9.117A4.002 4.002 0 0 0 6 17h1"/>
+                    <path d="M15.83 7.138a5.5 5.5 0 0 0-10.796 1.98S5.187 10 5.5 10.5"/>
+                    <path d="M17 17a5 5 0 1 0-1.17-9.862L14.5 7.5"/></svg><br> Sube tu noticia Aqui!</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{% url 'listar' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-ShippingBoxV1">
+                  <path d="M11.029 2.54a2 2 0 0 1 1.942 0l7.515 4.174a1 1 0 0 1 .514.874v8.235a2 2 0 0 1-1.029 1.748l-7 3.89a2 2 0 0 1-1.942 0l-7-3.89A2 2 0 0 1 3 15.824V7.588a1 1 0 0 1 .514-.874L11.03 2.54z"/>
+                  <path d="M3 7l9 5m0 0l9-5m-9 5v9.5"/><path d="M7.5 9.5l9-5"/>
+                  <path d="M6 12.328L9 14"/></svg><br> Lista De Noticias</a></li>
+                </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  <!--Inicio de la pagina de Ultima-->
+  <div>
+      <h1 class="text-center">
+          Ultima Hora 
+      </h1>
+  </div>
+  <hr>
+  <article class="col-md-12">
+    <!-- Modern - Bootstrap Cards -->
+    <header>
+    <br>
+    <h2>Seccion de blogueo | Noticias</h2>
+    <div class="cards-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-blog">
+                        <div class="card-image">
+                            <a href="#"> <img class="img" src="{% static 'img/web-vr.jpg'%}"></a>
+                            <div class="ripple-cont"></div>
+                        </div>
+                        <div class="table">
+                            <p class="card-description">La fiscalía le ordenó a la Brigada Investigadora de Delitos Económicos de la PDI (Bridec) que le soliciten a la exalcaldesa de Viña del Mar, Virginia Reginato, que entregue, de forma voluntaria, sus cartolas bancarias de los años 2010, 2016, 2017, 2018, 2019 y 2020. </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="table table-info">
+                            <h5 class="category-social">
+                    <i class="fa fa-twitter"></i> Twitter
+                  </h5>
+                            <h4 class="card-caption">
+                    <a href="#">"Today is a historic moment, but simply affirming our right to a #HealthyEnvironmentForAll is not enough.
+                       The #UNGA resolution is very clear: States must implement their commitments and scale up their efforts #ForNature 🌏"</a>
+                  </h4>
+                            <div class="ftr">
+                                <div class="author">
+                                    <a href="#"> <img src="{% static 'img/michelle.jpg'%}" alt="" class="avatar img-raised"> <span>Michelle Bachelet</span> </a>
+                                </div>
+                                <div class="stats"> <i class="fa fa-heart"></i> 365 &nbsp; <i class="fa fa-share-alt"></i> 120 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="table">
+                            <h6 class="category text-danger">
+                    <i class="fa fa-globe "></i> Presidente | Twitter
+                  </h6>
+                            <h4 class="card-caption">
+                    <a href="#">Hoy en La Moneda junto al ministro 
+                      @alvaroelizalde
+                       recibimos al nuevo Comité Permanente de la Conferencia Episcopal de Chile, presidido por el Arzobispo de La Serena, René Rebolledo.</a>
+                  </h4>
+                            <div class="ftr">
+                                <div class="author">
+                                    <a href="#"> <img src="{% static 'img/boris.jpg'%}" alt="" class="avatar img-raised"> <span>Gabriel Boric Font</span>
+                                        <div class="ripple-cont">
+                                            <div class="ripple ripple-on ripple-out" style="left: 574px; top: 364px; background-color: rgb(60, 72, 88); transform: scale(11.875);"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="stats"> <i class="fa fa-heart"></i> 1 day &nbsp; <i class="fa fa-comment"></i> 45 min </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-blog">
+                        <div class="card-image">
+                            <a href="#"> <img class="img" src="{% static 'img/Muni provid.jpg'%}"> </a>
+                            <div class="ripple-cont"></div>
+                        </div>
+                        <div class="table">                          
+                            <h4 class="card-caption">
+                        <a href="#">Nuestros equipos de 
+                          @Muni_provi
+                           se encuentran desplegados en terreno destapando sumideros y colaborando con los vecinos que requieran ayuda.</a>
+                </h4>
+                            <div class="ftr">
+                                <div class="author">
+                                    <a href="#"> <img src="{% static 'img/Evelyn Matthei.jpg'%}" alt="..." class="avatar img-raised"> <span>Evelyn Matthei</span> </a>
+                                </div>
+                                <div class="stats"> <i class="fa fa-clock-o"></i> 35 min </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-blog">
+                        <div class="card-image">
+                            <a href="#"> <img class="img" src="{% static 'img/Presi poderoso.jpg'%}"> </a>
+                            <div class="ripple-cont"></div>
+                        </div>
+                        <div class="table">
+                            <h6 class="category text-warning">
+                    <i class="fa fa-soundcloud"></i> Presidente | Twitter
+                  </h6>
+                            <h4 class="card-caption">
+                            <a href="#">Todos los poderes del Estado somos una sola fuerza para enfrentar la brutalidad del atentado sufrido por 
+                              @CarabdeChile
+                               en Cañete. A raíz de esto, he decretado tres días de duelo nacional.</a>
+                </h4>
+                            <div class="ftr">
+                                <div class="author">
+                                    <a href="#"> <img src="{% static 'img/boris.jpg'%}" alt="..." class="avatar img-raised"> <span>Gabriel Boric Font</span> </a>
+                                </div>
+                                <div class="stats"> <i class="fa fa-clock-o"></i> 15 min </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="table table-danger">
+                            <h5 class="category-social">
+                    <i class="fa fa-newspaper-o"></i> News
+                  </h5>
+                            <h4 class="card-caption">
+                    <a href="#">"Los jesuítas expulsan al polémico sacerdote chileno Felipe Berríos por “delitos contra el sexto mandamiento"</a>
+                  </h4>
+                            <p class="card-description"> La Compañía de Jesús en Chile expulsó al sacerdote Felipe Berríos, tras culminar una investigación sobre “hechos de índole sexual” y concluir que es “culpable de delitos contra el sexto mandamiento” cometidos con menores de edad..</p>
+                            <div class="ftr text-center"> <a href="https://www.bbc.com/mundo/articles/cjmkd8kr818o" class="btn btn-white btn-round">Read More</a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- PLAIN CARDS -->
+    <hr>
+    <!-- BACKGROUND CARDS -->
+    <h3>Motivacion del dia</h3>
+    <div class="cards-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-background" style="background-image: url(Fondo\ frase\ xd.jpg)">
+                        <div class="table">
+                            <h6 class="category text-info">Amorosa</h6>
+                            <a href="#">
+                                <h3 class="card-caption">Rayos de Optimismo</h3> </a>
+                            <p class="card-description"> En el lienzo del amor, cada pincelada de afecto es una obra maestra de la conexión humana.</p>
+                            <a href="https://www.elmundo.es/yodona/lifestyle/2023/05/03/64482379fdddff316d8b45f4.html" class="btn btn-white btn-simple"> <i class="fa fa-align-left"></i> Mas Frases </a>
+                            <a href="#pablo" class="btn btn-warning btn-round"> <i class="fa fa-cogs"></i> Deja tu frase
+                                <div class="ripple-container"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card card-background" style="background-image: url(Fondo\ frase\ 2.jpg)">
+                        <div class="table">
+                            <h6 class="category text-info">Frase motivacional social | laboral</h6>
+                            <h3 class="card-caption">Semillas de Inspiración</h3>
+                            <p class="card-description"> En el camino del progreso, cada mano extendida es un paso hacia un futuro más justo y próspero.</p>
+                            <a href="https://www.elmundo.es/yodona/lifestyle/2023/05/03/64482379fdddff316d8b45f4.html" class="btn btn-danger btn-round"> <i class="fa fa-align-left"></i> Mas Frases </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <h2>Consejos del dia</h2>
+    <!-- PROFILE CARDS 2 -->
+    <div class="cards-6">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-profile">
+                        <div class="card-image">
+                            <a href="#"> <img class="img" src="{% static 'img/Trabajador 1.jpg'%}">
+                                <div class="card-caption"> Francisca González </div>
+                            </a>
+                        </div>
+                        <div class="table">
+                            <h6 class="category text-danger">CEO / Co-Founder</h6>
+                            <p class="card-description"> La clave del éxito empresarial está en adaptarse y en innovar constantemente. 
+                              Mantén tu pasión por lo que haces y nunca pierdas de vista tus metas a largo plazo. Recuerda, los desafíos son oportunidades disfrazadas; abrázalos y conviértelos en tu camino hacia el crecimiento.</p>
+                            <div class="ftr"> <a href="#" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a> <a href="#" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a> <a href="#" class="btn btn-just-icon btn-simple btn-instagram"><i class="fa fa-instagram"></i></a> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-profile">
+                        <div class="card-image">
+                            <a href="#"> <img class="img" src="{% static 'img/trabajador 2.jpg'%}">
+                                <div class="card-caption"> Sebastián Silva </div>
+                            </a>
+                        </div>
+                        <div class="table">
+                            <h6 class="category text-success">Diseñador Grafico</h6>
+                            <p class="card-description"> La creatividad y la inspiración son tus mejores herramientas. No temas experimentar y explorar nuevas ideas. Mantente actualizado con las tendencias del diseño, pero nunca pierdas tu estilo único.
+                               Recuerda, el diseño es un proceso de evolución constante; sé paciente y perseverante en tu búsqueda de la excelencia creativa.</p>
+                            <div class="ftr"> <a href="#" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a> <a href="#" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a> <a href="#" class="btn btn-just-icon btn-simple btn-instagram"><i class="fa fa-instagram"></i></a> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-profile">
+                        <div class="card-image">
+                            <a href="#"> <img class="img" src="{% static 'img/trabajador 3.jpg'%}">
+                                <div class="card-caption"> Diego Herrera </div>
+                            </a>
+                        </div>
+                        <div class="table">
+                            <h6 class="category text-info">Front End Developer</h6>
+                            <p class="card-description"> La innovación y la curiosidad son tus aliadas en el desarrollo Frontend. Explora nuevas tecnologías y tendencias, pero mantén tu estilo único. Recuerda, el desarrollo web es un proceso en constante evolución; mantén la paciencia y persevera en tu búsqueda de la excelencia técnica.</p>
+                            <div class="ftr"> <a href="#" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a> <a href="#" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a> <a href="#" class="btn btn-just-icon btn-simple btn-instagram"><i class="fa fa-instagram"></i></a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- PROFILE CARDS 3 -->
+    <div class="cards-6">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="card card-profile">
+                      <div class="card-image">
+                          <a href="#"> <img class="img" src="{% static 'img/Trabajador 4.jpg'%}">
+                              <div class="card-caption">Valentina López </div>
+                          </a>
+                      </div>
+                      <div class="table">
+                          <h6 class="category text-danger">Psicólogo</h6>
+                          <p class="card-description"> En el campo de la psicología, la empatía y la escucha activa son tus mejores herramientas. Sé comprensivo y abierto a las experiencias de los demás. Recuerda que cada individuo es único y requiere un enfoque personalizado. Mantente humilde y dispuesto a aprender de cada interacción.</p>
+                          <div class="ftr"> <a href="#" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a> <a href="#" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a> <a href="#" class="btn btn-just-icon btn-simple btn-instagram"><i class="fa fa-instagram"></i></a> </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="card card-profile">
+                      <div class="card-image">
+                          <a href="#"> <img class="img" src="{% static 'img/trabajador 5.jpg'%}">
+                              <div class="card-caption"> Camila Muñoz </div>
+                          </a>
+                      </div>
+                      <div class="table">
+                          <h6 class="category text-success">Abogado</h6>
+                          <p class="card-description"> En el mundo del derecho, la integridad y la ética son fundamentales. Defiende los principios de justicia y equidad en todo momento. No temas desafiar las injusticias y abogar por los derechos de tus clientes. Mantente actualizado con la legislación y sé un defensor apasionado de la ley.</p>
+                          <div class="ftr"> <a href="#" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a> <a href="#" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a> <a href="#" class="btn btn-just-icon btn-simple btn-instagram"><i class="fa fa-instagram"></i></a> </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="card card-profile">
+                      <div class="card-image">
+                          <a href="#"> <img class="img" src="{% static 'img/trabajador 6.jpg'%}">
+                              <div class="card-caption"> Antonia Pérez </div>
+                          </a>
+                      </div>
+                      <div class="table">
+                          <h6 class="category text-info">Medico</h6>
+                          <p class="card-description"> En la medicina, la compasión y el compromiso son esenciales. Trata a cada paciente con respeto y empatía, reconociendo la importancia de su bienestar. Mantén una mente abierta y dispuesta a aprender de cada caso. Recuerda que tu dedicación y tu vocación son un faro de esperanza para aquellos que buscan ayuda.</p>
+                          <div class="ftr"> <a href="#" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a> <a href="#" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a> <a href="#" class="btn btn-just-icon btn-simple btn-instagram"><i class="fa fa-instagram"></i></a> </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+    <!-- PRODUCT CARDS -->
+    <hr>
+    <h3>Productos</h3>
+    <div class="cards-8">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card card-product">
+                        <div class="card-image">
+                            <a href="#"> <img class="img" src="{% static 'img/alexa.jpeg'%}"> </a>
+                        </div>
+                        <div class="table">
+                            <h6 class="category text-rose">Tecnologia</h6>
+                            <h4 class="card-caption">
+              <a href="#">Alexa</a>
+          </h4>
+                            <div class="card-description"> Alexa: tu asistente de voz inteligente. Reproduce música, controla dispositivos inteligentes, responde preguntas y mucho más.
+                               Simplifica tu vida con tecnología de vanguardia.</div>
+                            <div class="ftr">
+                                <div class="price">
+                                    <h4>$60.000</h4> </div>
+                                <div class="stats">
+                                    <button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning" data-original-title="Saved to Wishlist"> <i class="fa fa-shopping-cart"></i> </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card card-product">
+                        <div class="card-image">
+                            <a href="#"> <img class="img" src="{% static 'img/play 5 spiderman.jpeg'%}"> </a>
+                            <div class="ripple-cont"></div>
+                        </div>
+                        <div class="table">
+                            <h6 class="category text-muted"> Tecnologia | Gaming </h6>
+                            <h4 class="card-caption">
+              <a href="#">PS5 Spider-Man2 Sony</a>
+            </h4>
+                            <div class="card-description"> PlayStation 5 Ed. Spider-Man: Potencia, diseño icónico y aventuras épicas.
+                               Sumérgete en el mundo de Spider-Man con esta edición especial.</div>
+                            <div class="ftr">
+                                <div class="price">
+                                    <h4>$670.000</h4> </div>
+                                <div class="stats">
+                                    <button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default" data-original-title="Save to Wishlist"> <i class="fa fa-shopping-cart"></i>
+                                        <div class="ripple-cont"></div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card card-product">
+                        <div class="card-image">
+                            <a href="#"> <img class="img" src="{% static 'img/pc gamer.jpg'%}"> </a>
+                        </div>
+                        <div class="table">
+                            <h6 class="category text-muted">Tecnologia | Gaming</h6>
+                            <h4 class="card-caption">
+              <a href="#">Pc Gamer AMD Ryzen 5 5600G</a>
+            </h4>
+                            <div class="card-description"> PC Gaming: Potencia y estilo en un solo equipo. Gráficos impresionantes, 
+                              tiempos de carga ultrarrápidos y aventuras épicas te esperan.</div>
+                            <div class="ftr">
+                                <div class="price">
+                                    <h4>$580.000</h4> </div>
+                                <div class="stats">
+                                    <button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning" data-original-title="Saved to Wishlist"> <i class="fa fa-shopping-cart"></i> </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card card-product">
+                        <div class="card-image">
+                            <a href="#"> <img class="img" src="{% static 'img/OLED LG.jpeg'%}"> </a>
+                        </div>
+                        <div class="table">
+                            <h6 class="category text-rose">Tecnologia | Entretencion</h6>
+                            <h4 class="card-caption">
+              <a href="#">Ultra Hd Smart Tv LG</a>
+            </h4>
+                            <div class="card-description">LG OLED Ultra HD Smart TV: Colores vibrantes, negros profundos y conectividad inteligente en una experiencia visual excepcional.</div>
+                            <div class="ftr">
+                                <div class="price">
+                                    <h4>$2.420.000</h4> </div>
+                                <div class="stats">
+                                    <button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-default" data-original-title="Save to Wishlist"> <i class="fa fa-shopping-cart"></i> </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- TESTIMONIAL CARDS -->
+    <hr>
+    <h3>Testimonios De Noticias</h3>
+    <div class="cards-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-testimonial">
+                        <div class="icon"> <i class="fa fa-quote-right"></i> </div>
+                        <div class="table">
+                            <h5 class="card-description">
+                              "Presencié el accidente esta mañana mientras conducía hacia el trabajo. Vi cómo un auto chocaba contra un poste de luz delante de mí. Llamé al 911 y asistí a los ocupantes del vehículo. 
+                              Fue un recordatorio impactante sobre la importancia de la seguridad vial y la atención al conducir. Espero que todos se recuperen pronto.</h5> </div>
+                        <div class="ftr">
+                            <h4 class="card-caption">María López</h4>
+                            <h6 class="category">Choque</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">    
+                    <div class="card card-testimonial">
+                        <div class="icon"> <i class="fa fa-quote-right"></i> </div>
+                        <div class="table">
+                            <h5 class="card-description">
+                              "Hace unos días, me encontraba en casa cuando de repente noté un olor a quemado. Al salir a investigar, vi que había un incendio en la casa de al lado.
+                               Rápidamente llamé a los bomberos y ayudé a evacuar a los residentes.
+                               Fue una experiencia aterradora, pero estoy agradecida de que todos estén a salvo."</h5> 
+                          </div>
+                        <div class="ftr">
+                            <h4 class="card-caption">María Rodríguez</h4>
+                            <h6 class="category">sobre un incendio</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-testimonial">
+                        <div class="icon"> <i class="fa fa-quote-right"></i> </div>
+                        <div class="table">
+                            <h5 class="card-description">
+                              "El mes pasado, mi vecindario experimentó una inundación repentina debido a fuertes lluvias.
+                               Mi casa quedó inundada y tuve que ser evacuado por los equipos de rescate. Fue una situación caótica, pero la solidaridad de la comunidad fue reconfortante."</h5> 
+                          </div>
+                        <div class="ftr">
+                            <h4 class="card-caption">Carlos Martínez</h4>
+                            <h6 class="category">sobre una inundación</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </article>
+  
+  <br>
+  <br>
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="{% static 'img/foto chile.jpg'%}" class="card-img" alt="Imagen del crimen">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">La fatal marcha de Putre: el primer cortocircuito del general Iturriaga con La Moneda</h5>
+          <p class="card-text">En medio de la crisis desatada por la instrucción en la Brigada Motorizada n° 24 “Huamachuco” -que se cobró la vida del conscripto Franco Vargas (19) y lesiones a otros de sus compañeros- crecieron los reproches de La Moneda al rol del comandante en jefe del Ejército, general Javier Iturriaga.
+              Del general, poco se supo hasta tres días después de desatado el escándalo, ya que estaba en EE.UU. en una actividad recreativa relativa a una de sus grandes pasiones: el paracaidismo.
+          </p>
+          <p class="card-text"><small class="text-muted">Última actualización hace X horas</small></p>
+          <a href="https://www.latercera.com/la-tercera-domingo/noticia/la-fatal-marcha-de-putre-el-primer-cortocircuito-del-general-iturriaga-con-la-moneda/SLKU7J7X25FEJL2GDKCKCTWNWI/" class="btn btn-primary">Leer más</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Cadem: 65% está de acuerdo con que se apruebe una ley que permita a las isapres seguir operando</h5>
+          <p class="card-text">En una semana clave para la ley corta de isapres, que busca establecer un plazo de 13 años para la devolución de cobros en exceso por parte de las aseguradoras a sus afiliados, la última encuesta Cadem mostró un apoyo mayoritario a una normativa que ayude a las compañías.</p>
+          <p class="card-text"><small class="text-muted">Última actualización hace X horas</small></p>
+          <a href="https://www.biobiochile.cl/noticias/nacional/chile/2024/05/12/isapres-cadem.shtml" class="btn btn-primary">Leer más</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <img src="{% static 'img/social-isapres-1-1.jpg'%}" class="card-img" alt="Imagen del crimen">
+      </div>
+    </div>
+  </div>
+</nav>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+ 

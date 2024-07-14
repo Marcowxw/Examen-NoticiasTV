@@ -1,0 +1,360 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %} ">
+    <!-- BOOSTRAP -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
+    <!-- PARSLEY -->
+    <script src="jquery.js"></script>
+    <script src="parsley.min.js"></script>        
+    
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+    integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
+    crossorigin="anonymous"></script>
+    
+    <title>NoticiasTV Inicio</title>
+</head>
+<body style="background: linear-gradient(#2d4658, #a2c1d7);">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <div class="container px-0">
+        <a class="navbar-brand" href="{% url 'inicio' %}" style="font-size: 25px">NoticiasTV</a>
+        <button class="navbar-toggler" type="button" aria-expanded="false"><span class="navbar-toggler-icon"></span></button>
+        <div id="ul" class="collapse navbar-collapse">
+            <ul class="navbar-nav ">
+              <li class="nav-item"><a class="nav-link active" href="{% url 'inicio' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Home">
+                <path d="M21 19v-6.733a4 4 0 0 0-1.245-2.9L13.378 3.31a2 2 0 0 0-2.755 0L4.245 9.367A4 4 0 0 0 3 12.267V19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"/></svg> Inicio</a></li>
+            <li class="nav-item"><a class="nav-link active" href="{% url 'ultima' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Alarm">
+              <circle cx="12" cy="13" r="9"/>
+              <path d="M15.5 9.5L12 13"/>
+                <path d="M19 19l1 3"/>
+                <path d="M5 19l-1 3"/>
+                <path d="M2 5l3-3"/>
+                <path d="M19 2l3 3"/>
+                <path d="M12 4V2"/></svg><br> Ultima hora</a></li>                
+            <li class="nav-item"><a class="nav-link active" href="{% url 'nacional' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Globe">
+              <circle cx="12" cy="12" r="10"/>
+              <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(90 12 12)"/>
+              <path d="M2 12h20"/></svg> Nacional</a></li>
+            <li class="nav-item"><a class="nav-link active" href="{% url 'internacional' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Plane">
+              <path d="M4 11l-2 4 3.408 1.363a4 4 0 0 1 2.229 2.229L9 22l4-2-1.21-2.42a2 2 0 0 1 .679-2.56L14 14l4 7 3-4-2.29-7.469.715-.714c1.412-1.412 2.71-3.682 1.075-5.317-1.635-1.635-3.91-.34-5.316 1.077l-.72.708L7 3 3 6l7 4-1.02 1.531a2 2 0 0 1-2.56.68L4 11z"/></svg> Internacional</a></li>
+            <li class="nav-item"><a class="nav-link active" href="{% url 'tiempo' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Water">
+              <path d="M12 22a8 8 0 0 1-8-8c0-3.502 2.71-6.303 5.093-8.87L12 2l2.907 3.13C17.29 7.698 20 10.499 20 14a8 8 0 0 1-8 8z"/></svg> Tiempo</a></li>
+            <li class="nav-item"><a class="nav-link active" href="{% url 'contacto' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Envelope">
+              <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6z"/>
+              <path d="M2 8l7.501 6.001a4 4 0 0 0 4.998 0L22 8"/></svg> Contacto</a></li>
+            <li class="nav-item"><a class="nav-link active" href="{% url 'login' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-Person">
+              <circle cx="12" cy="7" r="5"/>
+              <path d="M17 14h.352a3 3 0 0 1 2.976 2.628l.391 3.124A2 2 0 0 1 18.734 22H5.266a2 2 0 0 1-1.985-2.248l.39-3.124A3 3 0 0 1 6.649 14H7"/></svg> Login</a></li>
+            <li class="nav-item"><a class="nav-link active" href="{% url 'subirnoticia' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-CloudUpload">
+                <path d="M12 12v9m0-9l-2.5 2m2.5-2l2.5 2"/><path d="M5.034 9.117A4.002 4.002 0 0 0 6 17h1"/>
+                <path d="M15.83 7.138a5.5 5.5 0 0 0-10.796 1.98S5.187 10 5.5 10.5"/>
+                <path d="M17 17a5 5 0 1 0-1.17-9.862L14.5 7.5"/></svg><br> Sube tu noticia Aqui!</a></li>
+            <li class="nav-item"><a class="nav-link active" href="{% url 'listar' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="ai ai-ShippingBoxV1">
+              <path d="M11.029 2.54a2 2 0 0 1 1.942 0l7.515 4.174a1 1 0 0 1 .514.874v8.235a2 2 0 0 1-1.029 1.748l-7 3.89a2 2 0 0 1-1.942 0l-7-3.89A2 2 0 0 1 3 15.824V7.588a1 1 0 0 1 .514-.874L11.03 2.54z"/>
+              <path d="M3 7l9 5m0 0l9-5m-9 5v9.5"/><path d="M7.5 9.5l9-5"/>
+              <path d="M6 12.328L9 14"/></svg><br> Lista De Noticias</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+  <div class="carousel py-4">
+    <ul class="slides">
+      <input type="radio" name="radio-buttons" id="img-1" checked />
+      <li class="slide-container">
+        <div class="slide-image">
+          <img src="{% static 'img/boric1.jpg' %}"  alt="1">
+          <div class="carousel-caption bg-light mb-5">
+            <h3 class="indexp">Aprobacion de Boric cae al 24%</h3>
+            <span class="badge badge-danger py-1 mx-1 mb-2">Politica</span><span class="badge badge-warning py-1 mx-1 mb-2">Ultima hora</span> 
+            <p class="indexp">Es el nivel mas bajo registrado por Cadem desde el inicio de su mandato</p>
+          </div>  
+        </div>
+        <div class="carousel-controls">
+          <label for="img-3" class="prev-slide">
+            <span>&lsaquo;</span>
+          </label>
+          <label for="img-2" class="next-slide">
+            <span>&rsaquo;</span>
+          </label>
+        </div>
+      </li>
+      <input type="radio" name="radio-buttons" id="img-2" />
+      <li class="slide-container">
+        <div class="slide-image">
+          <img src="{% static 'img/Mariana-incendio.jpg' %}" alt="2">
+          <div class="carousel-caption bg-light mb-5">
+            <h3 class="indexp">Una estufa eléctrica habría provocado el incendio donde falleció hijo de Mariana Derderián</h3>
+            <span class="badge badge-warning py-1 mx-1 mb-2">Última hora</span><span class="badge badge-warning py-1 mx-1 mb-2">Tendencia</span>
+            <p class="indexp">La cercanía de una estufa oleoeléctrica a algún tipo de textil es la primera hipótesis que se baraja sobre el origen del incendio que, durante la madrugada de este miércoles, se produjo en la casa de Mariana Derderián en Vitacura y donde falleció el menor de sus dos hijos, de seis años.</p>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <label for="img-1" class="prev-slide">
+            <span>&lsaquo;</span>
+          </label>
+          <label for="img-3" class="next-slide">
+            <span>&rsaquo;</span>
+          </label>
+        </div>
+      </li>
+      <input type="radio" name="radio-buttons" id="img-3"  />
+      <li class="slide-container">
+        <div class="slide-image">
+          <img src="{% static 'img/A_UNO_12868291.jpg' %}" alt="3">
+          <div class="carousel-caption bg-light mb-5">
+            <h3 class="indexp">Enfrentamiento entre bandas deja varios muertos</h3>
+            <span class="badge badge-success py-1 mx-1 mb-2">País</span>
+            <span class="badge badge-danger py-1 mx-1 mb-2">Tendencia</span>
+            <p class="indexp">En una zona urbana de la ciudad, se reportó un tiroteo esta mañana. Según testigos, hubo un enfrentamiento entre dos grupos rivales, resultando en un individuo herido de gravedad por un disparo en el abdomen. La víctima fue trasladada de inmediato al hospital más cercano, donde se encuentra en estado crítico. La policía está llevando a cabo una investigación para identificar a los responsables y determinar el motivo del tiroteo.</p>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <label for="img-2" class="prev-slide">
+            <span>&lsaquo;</span>
+          </label>
+          <label for="img-1" class="next-slide">
+
+          </label>
+        </div>
+      </li>
+      <div class="carousel-dots">
+        <label for="img-1" class="carousel-dot" id="img-dot-1"></label>
+        <label for="img-2" class="carousel-dot" id="img-dot-2"></label>
+        <label for="img-3" class="carousel-dot" id="img-dot-3"></label>
+      </div>
+    </ul>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="container">
+    <div class="card-columns">
+      <div class="card">
+    <a href="#">
+        <img class="card-img-top" src="{% static 'img/caida2.jpg' %}" alt="4">
+        <div class="card-body">
+          <h5 class="card-title">Chile fue el pais donde mas fuerte cayeron los ingresos del estado en 2023</h5>
+          <p class="card-text">
+            La merma de 3,3 puntos del PIB solo fue superada por ecuador,Segun Cepal (Comision economica para America Latina y el Caribe)
+          </p> 
+      </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="#">
+        <img class="card-img-top" src="{% static 'img/bravo.jpg' %}" alt="5">
+        <div class="card-body">
+          <h5 class="card-title">Claudio Bravo descarta la chance de volver al futbol chileno</h5>
+          <p class="card-text">Tras estar a punto de finalizar su contrato con el Betis,descarta rotundamente volver a la liga local tras una serie de rumores sobre su futuro. </p>          
+        </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="#">
+        <img class="card-img-top" src="{% static 'img/lluvias.jpg' %}" alt="6">
+        <div class="card-body">
+          <h5 class="card-title">Intensas lluvias dejan varias postales de inundamiento</h5>
+          <p class="card-text">Mas de 5 comunas inundadas,aproximadamente 10,000 personas se vieron afectadas con su hogar</p>         
+        </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="#">
+        <img class="card-img-top" src="{% static 'img/dolar_xd.jpeg' %}" alt="7">
+        <div class="card-body">
+          <h5 class="card-title">Dólar deja atrás las caídas y muestra alzas tras últimos datos inflacionarios de Chile</h5>
+          <p class="card-text">Tras cuatro semanas consecutivas registrando bajas, este miércoles el dólar cambió de tendencia y mostró variaciones al alza durante sus primeros movimientos de apertura. <br>
+            <br> Ayer el tipo de cambio promedió $934,20 y hoy tocó máximos de $941,15. A las 09:30 horas promedió $938,29.</p>
+        </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="#">
+        <img class="card-img-top" src="{% static 'img/Miel.jpg' %}" alt="8">
+        <div class="card-body">
+          <h5 class="card-title">3 enfermedades en las que los beneficios de la miel pueden ayudar</h5>
+          <p class="card-text">La miel tiene propiedades antisépticas,
+            antibacterianas y antiinflamatorias que pueden complementar distintos tratamientos médicos.</p>
+         
+        </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="#">
+        <img class="card-img-top" src="{% static 'img/OpenAI new.jpg' %}" alt="9">
+        <div class="card-body">
+          <h5 class="card-title">Tiembla Google: OpenAI trabaja en buscador web para ChatGPT</h5>
+          <p class="card-text">De acuerdo a reportes de prensa, OpenAI buscaría una forma de ser su propio motor de búsqueda con ChatGPT integrado.</p>
+        </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5 mb-5">
+  <div class="row mt-1">
+      <div class="col-md-4">
+          <div class="p-card bg-white p-2 rounded px-3">
+              <h5 class="mt-2">Grabado de patentes en Chile: publican el reglamento en el Diario Oficial y se definen las fechas exactas en que se comenzará a fiscalizar el tallado</h5><span class="badge badge-danger py-1 mb-2">Leyes</span><span class="d-block mb-5">Tras varios meses de espera, este martes 14 de mayo se publicó en el Diario Oficial el reglamento del grabado de patentes en vidrios y espejos de los autos en Chile. Ahora bien, a partir de ahora también comenzaron a regir dos plazos a los que se deben sumar quienes aún no lo hayan hecho.
+                Así los conductores de vehículos en circulación tienen hasta el 14 de mayo de 2025 y las comercializadoras solo hasta el 14 de septiembre del presente año. De ahí en más se comenzaría a fiscalizar la medida.
+                </span>
+              <div
+                  class="d-flex justify-content-between stats">
+                  <div><i class="fa fa-calendar-o"></i><span class="ml-2">Publicado hace 1 dia</span></div>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-4">
+      <div class="p-card bg-white p-2 rounded px-3">
+          <h5 class="mt-2">Denuncian intentos de robo y estafa a madre de Tomás Ross: "Han tratado de meterse a su cuenta"</h5><span class="badge badge-primary py-1 mb-2">Nacional</span><span class="d-block mb-5">Durante los últimos días se ha informado bastante respecto a la travesía de Camila Gómez, madre del pequeño Tomás Ross, quien necesita un fármaco avaluado en $3.500 millones debido a que padece distrofia muscular de Duchenne.
+            Fue por aquello que la mujer inició, días atrás, un viaje a pie entre Chiloé y Santiago, con el objetivo de entregar una misiva al presidente Gabriel Boric en La Moneda.</span>
+          <div class="d-flex justify-content-between stats">
+              <div><i class="fa fa-calendar-o"></i><span class="ml-2">Publicado hace 2 dias</span></div>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-4">
+      <div class="p-card bg-white p-2 rounded px-3">
+          <h5 class="mt-2">Rusia descubrió gran reserva de petróleo en zona antártica reclamada por Chile</h5><span class="badge badge-danger py-1 mb-2">Pais</span><span class="d-block mb-5">Medios argentinos han reportado este martes que Rusia descubrió una gran reserva de petróleo en un sector de la Antártida que es reclamado tanto por Chile como por Argentina y Reino Unido, cuyos territorios se superponen en el continente blanco.
+            El canal de noticias del bloque de los BRICS (Brasil, Rusia, India, China y Sudáfrica) sostuvo que el depósito se ubica en la zona británica, y que "contiene un valor estimado de 511 mil millones de barriles de petróleo, 10 veces la producción del Mar del Norte en los últimos años".</span>
+          <div class="d-flex justify-content-between stats">
+              <div><i class="fa fa-calendar-o"></i><span class="ml-2">Publicado hace 3 dias</span></div>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-4">
+      <div class="p-card bg-white p-2 rounded px-3">
+          <h5 class="mt-2">Trabajadora muere tras caída de montacarga en hotel de Las Condes</h5><span class="badge badge-primary py-1 mb-2">Nacional</span><span class="d-block mb-5">Desde la PDI informaron que la afectada fue trasladada por el personal del recinto hasta un centro asistencial, donde falleció producto de la gravedad de sus lesiones.De acuerdo con la información de PDI, el hecho ocurrió cerca de las 01:50 horas, cuando la afectada -quien trabajaba como maestra de cocina en el recinto- estaba cargando un montacarga con insumos destinados a la preparación de alimentos.</span>
+          <div class="d-flex justify-content-between stats">
+              <div><i class="fa fa-calendar-o"></i><span class="ml-2">Publicado hace 1 dia</span></div>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-4">
+      <div class="p-card bg-white p-2 rounded px-3">
+          <h5 class="mt-2">Primer ministro de Eslovaquia queda grave tras ser baleado luego de una reunión de gobierno</h5><span class="badge badge-danger py-1 mb-2">Internacional</span><span class="d-block mb-5">El primer ministro de Eslovaquia, Robert Fico, fue herido a bala en un tiroteo después de una reunión del gobierno, según reportó este mércoles la agencia de noticias TASR.
+            El incidente, confirmado por el vicepresidente del parlamento eslovaco, Lubos Blaha, tuvo lugar en una zona frente a la Casa de la Cultura de Handlová.
+            Fico se encontraba saludando a un pequeño grupo de ciudadanos reunidos en el exterior del edificio cuando repentinamente se escucharon tiros, tras lo cual el primer ministro se desplomó en el suelo.
+            Tras el hecho, Fico fue llevado a un vehículo para posteriormente ser trasladado a un hospital en helicóptero. Luego de unos minutos, se confirmó que está grave.
+            </span>
+          <div class="d-flex justify-content-between stats">
+              <div><i class="fa fa-calendar-o"></i><span class="ml-2">Publicado 15-05-2024</span></div>
+              </div>
+      </div>
+  </div>
+  <div class="col-md-4">
+      <div class="p-card bg-white p-2 rounded px-3">
+          <h5 class="mt-2">Increase confidence with trustpilot reviews</h5><span class="badge badge-primary py-1 mb-2">integrations</span><span class="d-block mb-5">Some kind of short descriptions can go here to better recommend tasks.</span>
+          <div class="d-flex justify-content-between stats">
+              <div><i class="fa fa-calendar-o"></i><span class="ml-2">2 days ago</span></div>
+              </div>
+      </div>
+  </div>
+</div>
+<div class="page">		
+  <!-- tabs -->
+  <div class="pcss3t pcss3t-effect-scale pcss3t-theme-1">
+    <input type="radio" name="pcss3t" checked  id="tab1"class="tab-content-first">
+    <label for="tab1">Deporte</label>
+    
+    <input type="radio" name="pcss3t" id="tab2" class="tab-content-2">
+    <label for="tab2"> Planeta Tierra</label>
+    
+    <input type="radio" name="pcss3t" id="tab3" class="tab-content-3">
+    <label for="tab3">Ciencia</label>
+    
+    <input type="radio" name="pcss3t" id="tab5" class="tab-content-last">
+    <label for="tab5">Tecnologia</label>
+    
+    <ul>
+      <li class="tab-content tab-content-first typography">
+        <h1>Alejandro Tabilo</h1>
+        <p>El nuevo lugar en el ranking ATP que tendrá Alejandro Tabilo tras avanzar a semifinales</p>
+        <p>El tenista chileno tendrá un ascenso en el listado de los mejores del mundo luego de su clasificación en el Masters 1000 de Roma.
+          Alejandro Tabilo dio un nuevo batacazo en el Masters 1000 de Roma, donde avanzó a semifinales tras vencer al chino Zhizhen Zhang (56°) en dos sets por 6-3 y 6-4. 
+          El tenista chileno mostró toda la solidez de las últimas semanas para conseguir un boleto a la ronda de los cuatro mejores por primera vez en su carrera en un Masters 1000.
+          Pero el cupo en la siguiente ronda no será la única recompensa para Tabilo. Y es que con esta victoria ante Zhizhen Zhang, el nacional tendrá un nuevo ascenso en el escalafón mundial. "Jano" subirá un total de 7 puestos en el ranking ATP, ubicándose en la 25° posición.No obstante, su lugar en el listado sólo se confirmará una vez finalizado el certman italiano.         
+        </p>
+        <p class="text-right"><em>Leer mas sobre esta noticia: <a href="https://www.24horas.cl/deportes/tenis/el-nuevo-lugar-en-el-ranking-atp-que-tendra-alejandro-tabilo-tras-avanzar-semifinales" target="_blank">24.horas</a>.</em></p>
+      </li>
+      
+      <li class="tab-content tab-content-2 typography">
+        <h1>Noche de auroras boreales en Euskal Herria</h1>
+        <p>Se han podido apreciar líneas y cortinas de color morado en numerosos puntos como Ibarra, Hondarribia o Murgia. Las auroras boreales podrían repetirse esta noche, aunque será más difícil verlas.Auroras boreales han sido visibles esta noche en los cielos de Euskal Herria. El fenómeno electromagnético, propio de las regiones polares, y del que no se tenía noticia en Euskal Herria desde hace varios años, ha sido captado en Isaba, Ibarra, Hondarribia, Murgia, Hernani, Zuia, Armintza </p>
+        <p class="text-right"><em>Leer mas sobre esta noticia: <a href="https://www.eitb.eus/es/noticias/sociedad/detalle/9492718/noche-de-auroras-boreales-en-euskal-herria-11-de-mayo-de-2024/" target="_blank">eitb.com</a>.</em></p>
+      </li>
+      
+      <li class="tab-content tab-content-3 typography">
+        <h1>Cinabrio</h1>
+        <p>Cinabrio, el codiciado mineral que antiguas civilizaciones usaban en rituales místicos y funerarios sin saber que era tóxico</p>
+        <p>Hermoso y peligroso, como el fenómeno natural que suele preceder su origen: las erupciones volcánicas.
+          El cinabrio rellena las grietas que quedan en las rocas, formando atractivas venas rojas que han fascinado durante milenios a quienes lo descubren.
+          Y esos han sido muchos, pues el mineral está presente en todos los lugares en los que hay o ha habido volcanes.
+          De hecho, como apunta Geology.com, es uno de los pocos minerales que fueron descubiertos, procesados y utilizados de forma independiente por pueblos antiguos en muchas partes del mundo.
+          El cinabrio se podía moler fácilmente para convertirlo en un polvo fino, que mezclado con distintos líquidos se convertía en varios tipos de pintura.
+        </p>
+          <p class="text-right"><em>Leer mas sobre esta noticia: <a href="https://www.bbc.com/mundo/articles/cgev54q152ko" target="_blank">bbc.com</a>.</em></p>
+      </li>
+      
+      <li class="tab-content tab-content-last typography">
+        <div class="typography">
+          <h1>ChatGPT</h1>
+          <p>6 nuevas funciones de la última versión de ChatGPT que es capaz de coquetear y detectar emociones (y las fallas que cometió)</p>
+          <p>OpenAI presentó el lunes la nueva versión de su exitoso chatbot de inteligencia artificial ChatGPT, que puede recibir y responder peticiones combinando audio, imagen y texto.
+            Se llama GPT-4o (“o” de “omni”) y estará disponible gratuitamente para todos los usuarios, aunque los suscriptores le podrán hacer más consultas.
+            GPT-4o integra en una sola herramienta funcionalidades de chatbots (como ChatGPT 3.5), asistentes de voz (como Siri o Alexa) y modelos de procesamiento de imágenes.
+            En palabras del reportero de tecnología de The New York Times, "mientras Apple y Google están transformando sus asistentes de voz (Siri y Hey Google) en chatbots, Open</p>
+            <p class="text-right"><em>Leer mas sobre esta noticia: <a href="https://www.bbc.com/mundo/articles/c51nnddz72go" target="_blank">bbc.com</a>.</em></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!--/ tabs -->
+</div>
+
+<h3>Motivacion del dia</h3>
+<div class="cards-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-background" style="background-image: url(Fondo\ frase\ xd.jpg)">
+                    <div class="table">
+                        <h6 class="category text-info">Amorosa</h6>
+                        <a href="#">
+                            <h3 class="card-caption">Rayos de Optimismo</h3> </a>
+                        <p class="card-description"> En el lienzo del amor, cada pincelada de afecto es una obra maestra de la conexión humana.</p>
+                        <a href="https://www.elmundo.es/yodona/lifestyle/2023/05/03/64482379fdddff316d8b45f4.html" class="btn btn-white btn-simple"> <i class="fa fa-align-left"></i> Mas Frases </a>
+                        <a href="#pablo" class="btn btn-warning btn-round"> <i class="fa fa-cogs"></i> Deja tu frase
+                            <div class="ripple-container"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-background" style="background-image: url(Fondo\ frase\ 2.jpg)">
+                    <div class="table">
+                        <h6 class="category text-info">Frase motivacional social | laboral</h6>
+                        <h3 class="card-caption">Semillas de Inspiración</h3>
+                        <p class="card-description"> En el camino del progreso, cada mano extendida es un paso hacia un futuro más justo y próspero.</p>
+                        <a href="https://www.elmundo.es/yodona/lifestyle/2023/05/03/64482379fdddff316d8b45f4.html" class="btn btn-danger btn-round"> <i class="fa fa-align-left"></i> Mas Frases </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+  <div class="container text-center">
+    <small>Copyright &copy; NacionalNoticiasTv2024</small>
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>

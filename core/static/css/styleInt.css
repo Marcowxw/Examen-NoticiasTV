@@ -1,0 +1,29 @@
+
+body {
+    font-family: "Playfair Display", serif;
+}
+
+.pindex{
+    color:white;
+    background-color: #30315e;
+    padding: 0.4em;
+}
+
+
+nav.navbar {
+    background-color: #3b6a8e !important; 
+}
+.bg-cover {
+    background-size: cover !important;
+    background-image: url("https://cloudfront-eu-central-1.images.arcpublishing.com/prisaradio/MNBQMFTWUNGLLKVFA55UO4E7TE.JPG");
+}
+
+#header{
+    background-size: cover !important;
+    background: url("https://static.eldiario.es/clip/ccfb1c25-54fb-4c1f-a55a-2c9226e46c38_16-9-discover-aspect-ratio_default_0.jpg");
+}
+
+#header2{
+    background-size: cover !important;
+    background: url("https://www.latercera.com/resizer/mX0Uj_kMYw9Ie-10us60CFqeW-s=/900x600/smart/cloudfront-us-east-1.images.arcpublishing.com/copesa/EHSI2U736ZBBNKQ2BELACUGYOA.jpg");
+}
